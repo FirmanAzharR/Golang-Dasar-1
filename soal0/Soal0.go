@@ -9,8 +9,9 @@ import (
 	"strings"
 )
 
-func palindrome(min int, max int) {
+func palindrome(min int, max int) int {
 	maxInput := int(math.Pow(10,9))
+	var result int
 	if min>0 && max>0 && max<=maxInput && min>max {
 		fmt.Println("input must be numb1>0; numb1 < numb2;")
 	}else{
@@ -29,8 +30,9 @@ func palindrome(min int, max int) {
 				count+=1
 			}
 		}
-		fmt.Println(count)
+		result=count
 	}
+	return result
 }
 
 func scanner() {
@@ -53,7 +55,8 @@ func scanner() {
 			numb1, _ = strconv.Atoi(split[0])
 			numb2, _ = strconv.Atoi(split[1])
 			if numb1>0 && numb2>0 {
-				palindrome(numb1, numb2)
+				result:=palindrome(numb1, numb2)
+				fmt.Println(result)
 			}else{
 				fmt.Println("Input must be 2 number separated with space ex: 21 31")
 			}
