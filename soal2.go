@@ -39,7 +39,7 @@ func findMissingNumber(input string) int{
 }
 
 func main(){
-	input:="123567"
+	input:="12346789"
 	find:=findMissingNumber(input)
 	fmt.Println(find)
 }
