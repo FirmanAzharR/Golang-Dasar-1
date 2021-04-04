@@ -93,7 +93,41 @@ func getIdentity(book []string) []string{
 }
 
 func main(){
-	book := "3A13 5X19 9Y20 2C18 1N20 3N20 1M21 1F14 9A21 3N21 0E13 5G14 8A23 9E22 3N14"
-	listBook := Contains(book)
-    sortBookByCtg(listBook)
+	input := "3A13 5X19 9Y20 2C18 1N20 3N20 1M21 1F14 9A21 3N21 0E13 5G14 8A23 9E22 3N14"
+	books:= strings.Split(input, " ")
+	lenBooks:=0
+	cekTitle:=0
+	cekSize:=0
+	var lenBookValue []string
+	var cekTitleValue []string
+	var cekSizeValue []string
+	for _,n:=range books {
+		tall,_:=strconv.Atoi(n[2:4])
+		if len(n)>4 {
+			lenBooks++
+			lenBookValue = append(lenBookValue, n)
+		}else{
+			if n[1:2]!="A"&&n[1:2]!="B"&&n[1:2]!="C"&&n[1:2]!="D"&&n[1:2]!="E"&&n[1:2]!="F"&&n[1:2]!="G"&&n[1:2]!="H"&&n[1:2]!="I"&&n[1:2]!="J"&&n[1:2]!="K"&&n[1:2]!="L"&&n[1:2]!="M"&&n[1:2]!="N"&&n[1:2]!="O"&&n[1:2]!="P"&&n[1:2]!="Q"&&n[1:2]!="R"&&n[1:2]!="S"&&n[1:2]!="T"&&n[1:2]!="U"&&n[1:2]!="V"&&n[1:2]!="W"&&n[1:2]!="X"&&n[1:2]!="Y"&&n[1:2]!="Z" {
+				cekTitle++
+				cekTitleValue = append(cekTitleValue, n)
+			}
+			if tall<13 || tall>24{
+				cekSize++
+				cekSizeValue = append(cekSizeValue, n)
+			}
+		}
+	}
+	if lenBooks>0 {
+		fmt.Println("Kode buku melebihi batas, Maksimal kode buku 4 digit: ",lenBookValue)
+	}
+	if cekTitle>0{
+		fmt.Println("Kode buku title harus hurus besar A-Z: ",cekTitleValue)
+	}
+	if cekSize>0{
+		fmt.Println("Panjang buku(2 digit terakhir) minimal 14 maksimal 24: ",cekSizeValue)
+	}
+	if lenBooks==0 && cekTitle==0 && cekSize==0 {
+		listBook := Contains(input)
+		sortBookByCtg(listBook)
+	}
 }
