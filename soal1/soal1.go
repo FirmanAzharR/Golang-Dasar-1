@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-func sortBookByCtg(listBook []string) {
+func sortBookByCtg(listBook []string) []string{
 	category:= [...]string{"6","7","0","9","4","8","1","2","5","3"}
 
 	var bookSelf []string
@@ -34,7 +34,7 @@ func sortBookByCtg(listBook []string) {
 			bookSelf = append(bookSelf, temp...)
 		}
 	}
-	fmt.Println(bookSelf)
+	return bookSelf
 }
 
 func Contains(a string) []string{
@@ -61,8 +61,8 @@ func Contains(a string) []string{
 				}
 			}
 		}
-	}
 
+	}
 	for n, s := range listBook {
 		if find == s {
 			index = n
@@ -71,8 +71,8 @@ func Contains(a string) []string{
 	listBook[index] = listBook[len(listBook)-1] // Copy last element to index i.
 	listBook[len(listBook)-1] = ""   // Erase last element (write zero value).
 	listBook = listBook[:len(listBook)-1]   // Truncate slice.
-
-	return listBook
+	sortedBook:=sortBookByCtg(listBook)
+	return sortedBook
 }
 
 func getIdentity(book []string) []string{
@@ -128,6 +128,6 @@ func main(){
 	}
 	if lenBooks==0 && cekTitle==0 && cekSize==0 {
 		listBook := Contains(input)
-		sortBookByCtg(listBook)
+		fmt.Println(listBook)
 	}
 }
